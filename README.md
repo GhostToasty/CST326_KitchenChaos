@@ -1,4 +1,6 @@
 # CST326_KitchenChaos
 CST326 Kitchen Chaos
-Based on Overcooked
+
+Gameplay based on Overcooked
+
 https://www.youtube.com/watch?v=AmGSEH7QcDg
