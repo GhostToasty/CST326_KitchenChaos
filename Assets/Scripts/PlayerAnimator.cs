@@ -5,7 +5,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     private Animator animator;
 
-    //variable for string to catch compiler error
+    //variable for string to catch potential compiler errors
     private const string IS_WALKING = "IsWalking";
     [SerializeField] private Player player;
     
