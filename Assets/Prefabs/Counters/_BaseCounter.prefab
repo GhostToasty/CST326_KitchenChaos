@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 209628120024344477}
   - component: {fileID: 2701909176878564759}
-  - component: {fileID: 4659598985233455051}
   m_Layer: 6
   m_Name: _BaseCounter
   m_TagString: Untagged
@@ -55,18 +54,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &4659598985233455051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2581510173649127283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 152738702499b864c840d7d0920b1856, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseCounter
 --- !u!1 &6187321860023058959
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using System;
 public class GameInput : MonoBehaviour
 {
     public event EventHandler OnInteractAction;
+    public event EventHandler OnInteractAlternateAction;
 
     private PlayerInputActions playerInputActions;
 
@@ -17,8 +18,16 @@ public class GameInput : MonoBehaviour
 
         //assigns listener for when interact input is done
         playerInputActions.Player.Interact.performed += Interact_performed;
+        playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
     }
 
+    
+    private void InteractAlternate_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        OnInteractAlternateAction?.Invoke(this, EventArgs.Empty);
+    }
+
+    
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         //null conditional operator to make sure value isn't null

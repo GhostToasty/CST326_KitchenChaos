@@ -93,19 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfbddb094c6ab5459684285f29e83e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ContainerCounter
-  kitchenObjectSO: {fileID: 11400000, guid: 39b79222607e387449e1f016ec6e911e, type: 2}
   counterTopPoint: {fileID: 3263814802916186707}
---- !u!114 &5618147786588556963 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4659598985233455051, guid: b692885bfc652894a8aaa6d3889bfd91, type: 3}
-  m_PrefabInstance: {fileID: 963087745496799592}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3354846238095154715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 152738702499b864c840d7d0920b1856, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseCounter
+  kitchenObjectSO: {fileID: 11400000, guid: 39b79222607e387449e1f016ec6e911e, type: 2}
 --- !u!1001 &4469097484667608312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -237,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1983b8e98c23147488c3c0cd1b190ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectedCounterVisual
-  baseCounter: {fileID: 5618147786588556963}
+  baseCounter: {fileID: 7596548681061573788}
   visualGameObjectArray:
   - {fileID: 5944283779398904215}
   - {fileID: 5693838453440841246}
@@ -323,10 +312,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8806156216058609564}
   m_SourcePrefab: {fileID: 100100000, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
 --- !u!4 &8430465913830085132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
   m_PrefabInstance: {fileID: 5426550659271685799}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8430465913830085133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+  m_PrefabInstance: {fileID: 5426550659271685799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8806156216058609564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430465913830085133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6bba24f721a5744b11bea80f05e4e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContainerCounterVisual
+  containerCounter: {fileID: 7596548681061573788}
