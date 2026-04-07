@@ -7,7 +7,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     //use of property for singleton pattern
     //any class can get info, but only this class can set
     public static Player Instance {get; private set;}
-    
+
+    public event EventHandler OnPickedSomething;
     public event EventHandler<OnSelectedCounterChangeEventArgs> OnSelectedCounterChange;
     public class OnSelectedCounterChangeEventArgs : EventArgs
     {
@@ -45,6 +46,9 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
     {
+        //cannot interact with anything while not in game playing state 
+        if (!KitchenGameManager.Instance.IsGamePlaying()) return;
+        
         //checks if selected counter exists and allows interaction
         if (selectedCounter != null)
             selectedCounter.InteractAlternate(this);
@@ -52,6 +56,9 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
+        //cannot interact with anything while not in game playing state
+        if (!KitchenGameManager.Instance.IsGamePlaying()) return;
+        
         //checks if selected counter exists and allows interaction
         if (selectedCounter != null)
             selectedCounter.Interact(this);
@@ -174,6 +181,9 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
         this.kitchenObject = kitchenObject;
+
+        if (kitchenObject != null)
+            OnPickedSomething?.Invoke(this, EventArgs.Empty);
     }
 
     public KitchenObject GetKitchenObject()

@@ -34,7 +34,7 @@ public class DeliveryManagerSingleUI : MonoBehaviour
             //creates and reveals foot item icon
             Transform iconTransform = Instantiate(iconTemplate, iconContainer);
             iconTransform.gameObject.SetActive(true);
-            iconTemplate.GetComponent<Image>().sprite = kitchenObjectSO.sprite;
+            iconTransform.GetComponent<Image>().sprite = kitchenObjectSO.sprite;
         }
     }
 }

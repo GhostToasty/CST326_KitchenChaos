@@ -5,6 +5,13 @@ using UnityEngine.EventSystems;
 
 public class CuttingCounter : BaseCounter, IHasProgress
 {
+    public static event EventHandler OnAnyCut;
+    new public static void ResetStaticData()
+    {
+        //resets static events each time a new game is started 
+        OnAnyCut = null;
+    }
+
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
     public class OnProgressChangedEventArgs : EventArgs
     {
@@ -83,6 +90,9 @@ public class CuttingCounter : BaseCounter, IHasProgress
             
             //triggers cutting animation 
             OnCut?.Invoke(this, EventArgs.Empty);
+
+            //triggers audio
+            OnAnyCut?.Invoke(this, EventArgs.Empty);
             
             //gets cut recipe based on object put on counter 
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());

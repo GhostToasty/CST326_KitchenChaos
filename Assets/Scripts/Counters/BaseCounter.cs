@@ -1,8 +1,16 @@
+using System;
 using UnityEngine;
 
 public class BaseCounter : MonoBehaviour, IKitchenObjectParent
 {
     //inheritance class for all the counters; good to use since they're all similar 
+
+    public static event EventHandler OnAnyObjectPlacedHere;
+    public static void ResetStaticData()
+    {
+        //resets static events each time a new game is started 
+        OnAnyObjectPlacedHere = null;
+    }
 
     [SerializeField] private Transform counterTopPoint;
 
@@ -30,6 +38,9 @@ public class BaseCounter : MonoBehaviour, IKitchenObjectParent
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
         this.kitchenObject = kitchenObject;
+
+        if (kitchenObject != null)
+            OnAnyObjectPlacedHere?.Invoke(this, EventArgs.Empty);
     }
 
     public KitchenObject GetKitchenObject()
