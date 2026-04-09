@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    private const string PLAYER_PREFS_SOUND_EFFECTS_VOLUME = "SoundEffectsVolume";
+    
     public static SoundManager Instance { get; private set; } //singleton
     
     [SerializeField] private AudioClipRefsSO audioClipRefsSO;
+
+    private float volume = 1f;
     
 
     private void Awake()
     {
         Instance = this;
+
+        //setting default value 
+        volume = PlayerPrefs.GetFloat(PLAYER_PREFS_SOUND_EFFECTS_VOLUME, 1f);
     }
     
 
@@ -73,10 +80,10 @@ public class SoundManager : MonoBehaviour
     }
     
 
-    private void PlaySound(AudioClip audioClip, Vector3 position, float volume = 1f)
+    private void PlaySound(AudioClip audioClip, Vector3 position, float volumeMultiplier = 1f)
     {
         //plays single audio clip with no randomization 
-        AudioSource.PlayClipAtPoint(audioClip, position, volume);
+        AudioSource.PlayClipAtPoint(audioClip, position, volumeMultiplier * volume);
     }
 
 
@@ -84,5 +91,39 @@ public class SoundManager : MonoBehaviour
     {
         //will set player as position and allows adjustable volume
         PlaySound(audioClipRefsSO.footstep, position, volume);
+    }
+
+    public void PlayCountdownSound()
+    {
+        //will play every time a new number appears during the countdown 
+        PlaySound(audioClipRefsSO.warning, Vector3.zero);
+    }
+
+
+    public void PlayWarningSound(Vector3 position)
+    {
+        //will play every time a new number appears during the countdown 
+        PlaySound(audioClipRefsSO.warning, position);
+    }
+
+
+    public void ChangeVolume()
+    {
+        //increases volume by 10%
+        volume += 0.1f;
+
+        //resets volume back to zero when volume goes past max 
+        if (volume > 1f)
+            volume = 0;
+
+        //saves set volume data even after the game has be exited 
+        PlayerPrefs.SetFloat(PLAYER_PREFS_SOUND_EFFECTS_VOLUME, volume);
+        PlayerPrefs.Save();
+    }
+
+
+    public float GetVolume()
+    {
+        return volume;
     }
 }

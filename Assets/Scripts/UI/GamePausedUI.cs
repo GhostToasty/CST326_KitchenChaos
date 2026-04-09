@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,7 @@ public class GamePausedUI : MonoBehaviour
 {
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button mainMenuButton;
+    [SerializeField] private Button optionsButton;
 
 
     private void Awake()
@@ -19,6 +21,13 @@ public class GamePausedUI : MonoBehaviour
         {
             //brings up load scene and then brings player to main menu
             Loader.Load(Loader.Scene.MainMenuScene);
+        });
+
+        optionsButton.onClick.AddListener(() =>
+        {
+            //takes user to options menu and hides pause menu
+            Hide();
+            OptionsUI.Instance.Show(Show);
         });
     }
 
@@ -46,6 +55,9 @@ public class GamePausedUI : MonoBehaviour
     {
         //shows paused menu
         gameObject.SetActive(true);
+
+        //automatically makes resume button selected for sake of controller use
+        resumeButton.Select();
     }
 
 
